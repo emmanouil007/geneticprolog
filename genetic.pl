@@ -88,14 +88,16 @@ randomNode(R, SIZE, CURRENT, OUTPUTTYPE, NODE):- TEMP is SIZE - CURRENT
     , !.
 
 randomTree(0, SIZE, CHILDCOUNT, [], [], [], []).
-randomTree(-1, SIZE, CHILDCOUNT, [H], [H|T], [A|X], [C|D]):- random(R)
+randomTree(-1, SIZE, CHILDCOUNT, [H], [H|T], [A|X], [C|D]):- randomize
+    , random(R)
     , pickRandomProgram(R, H, E)
     , E = command(C, TYPES, H)
     , length(TYPES, A)
     , TEMP is A+CHILDCOUNT+1
     , randomTree(0, SIZE, TEMP, TYPES, T, X, D)
     , !.
-randomTree(0, SIZE, CHILDCOUNT, [H|T], [H|M], [X|Z], [C|D]):- random(R)
+randomTree(0, SIZE, CHILDCOUNT, [H|T], [H|M], [X|Z], [C|D]):- randomize
+    , random(R)
     , randomNode(R, SIZE, CHILDCOUNT, H, N)
     , N = command(C, B, H)
     , length(B, X)
@@ -103,4 +105,3 @@ randomTree(0, SIZE, CHILDCOUNT, [H|T], [H|M], [X|Z], [C|D]):- random(R)
     , SUM is CHILDCOUNT + X + 1
     , randomTree(0, SIZE, SUM, NEWB, M, Z, D)
     , !.
-
