@@ -8,7 +8,7 @@ notEquals(A,B).
 head([H|T], H).
 
 concat([],L,L).
-concat([H|T],L2,[H|L3])  :-  concat(T,L2,L3).
+concat([H|T],L2,[H|L3]):-  concat(T,L2,L3).
 
 command(1, add, [double, double], double).
 command(1, add, [int, int], int).
