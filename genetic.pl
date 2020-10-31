@@ -105,3 +105,20 @@ randomTree(0, SIZE, CHILDCOUNT, [H|T], [H|M], [X|Z], [C|D]):- randomize
     , SUM is CHILDCOUNT + X + 1
     , randomTree(0, SIZE, SUM, NEWB, M, Z, D)
     , !.
+
+randomTrees([], [], []).
+randomTrees([SIZE|A], [OUTPUTTYPE|B], [H|T]):- randomTree(-1, SIZE, 0, [OUTPUTTYPE], TYPES, CHILDCOUNT, COMMAND)
+    , H = gene(TYPES, CHILDCOUNT, COMMAND)
+    , randomTrees(A, B, T).
+
+/*
+* EXAMPLES
+* randomPopulation(10, [double], [13], R).
+* randomPopulation(7, [double, double], [15, 30], R).
+*/
+
+
+randomPopulation(0, OUTPUTTYPES, SIZES, []):- !.
+randomPopulation(AMOUNT, OUTPUTTYPES, SIZES, [H|T]):- randomTrees(SIZES, OUTPUTTYPES, H)
+    , TEMP is AMOUNT - 1
+    , randomPopulation(TEMP, OUTPUTTYPES, SIZES, T).
