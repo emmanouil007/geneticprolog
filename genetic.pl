@@ -52,9 +52,7 @@ getRandomFunction(OUTPUTTYPE, F):- getAllFunctions(OUTPUTTYPE, L)
     , random(1, TEMP, AT)
     , nth(AT, L, F).
 
-notTerminal(COMMAND):- (COMMAND = command(terminal, X, Y)
-    ; COMMAND = command(constant, X, Y)
-    ; COMMAND = command(variable, X, Y))
+notTerminal(COMMAND):- terminals(COMMAND)
     , !
     , fail.
 notTerminal(COMMAND).
