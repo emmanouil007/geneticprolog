@@ -63,16 +63,7 @@ mutants(add, [subtract, multiply, divide]).
 mutants(subtract, [add, multiply, divide]).
 mutants(multiply, [add, subtract, divide]).
 mutants(divide, [add, subtract, multiply]).
-/*
-randomNode(R, SIZE, OUTPUTTYPE, ARITY, NODE):- ARITY < 0
-    , ARITY < -0.8
-    , getRandomTerminal(OUTPUTTYPE, NODE)
-    , !.
-randomNode(R, SIZE, OUTPUTTYPE, ARITY, NODE):- ARITY < 0
-    , ARITY >= -0.8
-    , getRandomFunction(OUTPUTTYPE, NODE)
-    , !.
-*/
+
 pickRandomProgram(R, OUTPUTTYPE, F):- R >= 0.01
     , getRandomFunction(OUTPUTTYPE, F).
 pickRandomProgram(R, OUTPUTTYPE, F):- R < 0.01
