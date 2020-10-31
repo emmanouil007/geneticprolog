@@ -105,3 +105,7 @@ randomTree(0, SIZE, CHILDCOUNT, [H|T], [H|M], [X|Z], [C|D]):- randomize
     , SUM is CHILDCOUNT + X + 1
     , randomTree(0, SIZE, SUM, NEWB, M, Z, D)
     , !.
+
+/*
+SOME COMMENT
+*/
