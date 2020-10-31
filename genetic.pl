@@ -119,6 +119,7 @@ randomTrees([SIZE|A], [OUTPUTTYPE|B], [H|T]):- randomTree(-1, SIZE, 0, [OUTPUTTY
 
 
 randomPopulation(0, OUTPUTTYPES, SIZES, []):- !.
-randomPopulation(AMOUNT, OUTPUTTYPES, SIZES, [H|T]):- randomTrees(SIZES, OUTPUTTYPES, H)
+randomPopulation(AMOUNT, OUTPUTTYPES, SIZES, [H|T]):- randomTrees(SIZES, OUTPUTTYPES, R)
+    , H = candidate(R)
     , TEMP is AMOUNT - 1
     , randomPopulation(TEMP, OUTPUTTYPES, SIZES, T).
