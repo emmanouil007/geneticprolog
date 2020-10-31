@@ -108,4 +108,5 @@ randomTree(0, SIZE, CHILDCOUNT, [H|T], [H|M], [X|Z], [C|D]):- randomize
 
 /*
 SOME COMMENT
+EXTRA COMMENTS 
 */
